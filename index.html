@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AI Use Cases, Built &amp; Live</title>
-<meta name="description" content="Working AI applications, designed, built and launched. Each one turns an AI idea into something people can use today.">
+<title>AI Use Cases, Built &amp; Live · Abdul Saleem</title>
+<meta name="description" content="Abdul Saleem, AI Consultant & Builder. Working AI applications, designed, built and launched. Each one turns an AI idea into something people can use today.">
 <meta name="theme-color" content="#0E1B3D">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AI Use Cases, Built & Live">
+<meta property="og:title" content="AI Use Cases, Built & Live · Abdul Saleem">
 <meta property="og:description" content="Working AI applications, designed, built and launched. Each one turns an AI idea into something people can use today.">
 <meta property="og:url" content="https://saleempc.github.io/">
 <meta property="og:image" content="https://saleempc.github.io/img/og.jpg">
@@ -53,6 +53,12 @@ h1{font-weight:800;font-size:clamp(2.6rem,8vw,5.6rem);letter-spacing:-.035em;max
 .facts{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem;padding:0;list-style:none}
 .facts li{font-weight:600;font-size:.92rem;border:1px solid rgba(234,240,255,.18);background:rgba(234,240,255,.06);border-radius:999px;padding:.45rem .95rem}
 .facts b{color:#FFC22E;font-family:"Bricolage Grotesque",sans-serif;font-size:1.05rem;margin-right:.25rem}
+
+.li-btn{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.75rem;background:#FFC22E;color:#0E1B3D;font-weight:600;text-decoration:none;padding:.8rem 1.25rem;border-radius:999px;transition:transform .2s,filter .2s}
+.li-btn[hidden]{display:none}
+.li-btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.li-btn svg{width:1.15rem;height:1.15rem;fill:none;stroke:currentColor;stroke-width:2}
+.byline{font-size:clamp(1rem,2vw,1.15rem)}
 
 /* apps */
 .apps{padding:clamp(3rem,7vw,5rem) 0}
@@ -110,6 +116,10 @@ h1{font-weight:800;font-size:clamp(2.6rem,8vw,5.6rem);letter-spacing:-.035em;max
     <h1>AI Use Cases, <span class="hl">Built &amp; Live</span></h1>
     <p class="lead">Working applications I designed, built and launched. Each one turns an AI idea into something people can use today.</p>
     <ul class="facts" id="facts"></ul>
+    <a class="li-btn" id="liBtn" href="#" target="_blank" rel="noopener" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13c0-3 5-3 5 0v3"/></svg>
+      Connect on LinkedIn
+    </a>
   </div>
 </header>
 
@@ -135,7 +145,9 @@ h1{font-weight:800;font-size:clamp(2.6rem,8vw,5.6rem);letter-spacing:-.035em;max
 <script>
 /* ===================== EDIT HERE ===================== */
 /* Optional name / role line shown above the headline, e.g. "Your Name · AI Consultant & Builder" */
-var BYLINE = "";
+var BYLINE = "Abdul Saleem · AI Consultant & Builder";
+/* Optional LinkedIn profile (leave "" to hide the button) */
+var LINKEDIN = "https://www.linkedin.com/in/saleempc/";
 /* status: "live" (open to everyone), "signin" (live, needs sign-in), "private" (live, owner-only) */
 var APPS = [
   { name:"AI Project Office", url:"https://keystone.ai2all.online/", tagline:"The project office that writes, watches and advises.", img:"img/keystone.jpg", status:"live" },
@@ -154,6 +166,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp
 function host(u){try{return new URL(u).host}catch(e){return u}}
 
 document.getElementById("byline").textContent=BYLINE;
+if(LINKEDIN){var li=document.getElementById("liBtn");li.href=LINKEDIN;li.hidden=false}
 document.getElementById("facts").innerHTML=
   '<li><b>'+APPS.length+'</b>working apps</li><li><b>100%</b>live online</li><li><b>AI</b>at the core</li>';
 document.getElementById("grid").innerHTML=APPS.map(function(a){
