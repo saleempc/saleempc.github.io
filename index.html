@@ -59,6 +59,8 @@ h1{font-weight:800;font-size:clamp(2.6rem,8vw,5.6rem);letter-spacing:-.035em;max
 .li-btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
 .li-btn svg{width:1.15rem;height:1.15rem;fill:none;stroke:currentColor;stroke-width:2}
 .byline{font-size:clamp(1rem,2vw,1.15rem)}
+.nw{white-space:nowrap}
+.foot a{display:inline-block;padding:.45rem 0}
 
 /* apps */
 .apps{padding:clamp(3rem,7vw,5rem) 0}
@@ -165,7 +167,8 @@ var LABEL={live:"Live",signin:"Live · Sign-in",private:"Live · Private"};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function host(u){try{return new URL(u).host}catch(e){return u}}
 
-document.getElementById("byline").textContent=BYLINE;
+/* each part of the byline ("Name · Role") stays on one line; parts wrap as whole units on small phones */
+document.getElementById("byline").innerHTML=BYLINE.split(" · ").map(function(s){return '<span class="nw">'+esc(s)+'</span>'}).join(" · ");
 if(LINKEDIN){var li=document.getElementById("liBtn");li.href=LINKEDIN;li.hidden=false}
 document.getElementById("facts").innerHTML=
   '<li><b>'+APPS.length+'</b>working apps</li><li><b>100%</b>live online</li><li><b>AI</b>at the core</li>';
